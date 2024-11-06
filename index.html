@@ -1,0 +1,33 @@
+function delay(byms) {
+    return new Promise((resolve) => {
+      setTimeout(resolve, byms);
+    });
+  }
+  
+  // Function to simulate fetching data from an API
+  function datafetchrandodelay() {
+    return delay(2000).then(() => {
+      var randomNumber = Math.floor(Math.random() * 100) + 1; // Random number between 1 and 100
+      return randomNumber;
+    });
+  }
+  
+  // Function to process the data
+  function multipletwo(data) {
+    return delay(1000).then(function() {
+      var processedData = data * 2;
+      console.log("Processed Data:", processedData);
+      return processedData;
+    });
+  }
+  
+  // Chain the functions together
+  datafetchrandodelay()
+    .then(function(data) {
+      console.log("Fetched Data:", data);
+      return multipletwo(data);
+    })
+    .then(function(result) {
+      console.log("Final Result:", result);
+    })
+   
